@@ -326,7 +326,7 @@ No automatic address translation, cross-network forwarding, or prefix conversion
     "decision": "needs_human_approval",
     "reasonCode": "REGTEST_MANUAL_REVIEW",
     "reason": "Regtest integration review check",
-    "policyTraceId": "trace-regtest-r1-001",
+    "policyTraceId": "trace-regtest-r3-001",
     "policyVersion": "regtest-constitution-v1.1",
     "evaluatedAt": 1770000001,
     "expiresAt": 1770000300
