@@ -285,7 +285,8 @@ No automatic address translation, cross-network forwarding, or prefix conversion
   "expiresAt": 1770000300
 }
 ```
-- **Canonical Binary Length**: `827 bytes`
+- **Canonical Binary Length**: `827 bytes` (full handoff payload; x402 body is `198 bytes`, and x402 segment including presence flag is `199 bytes`)
+- **Canonical Schema**: Preserves canonical fields `x402Version`, `scheme`, `network`, `invoiceHash`, `resourceHash`, `amountSats`, `payTo`, `nonce`, `issuedAt`, `expiresAt`.
 - **SHA-256 of Canonical Binary Handoff ($C$)**:
   `9506888f6d4cdf040159e539ba92e1792302ada347755d1aedba6fe7a125355b`
 - **Canonical Binary Hex**:
@@ -384,7 +385,15 @@ No automatic address translation, cross-network forwarding, or prefix conversion
 
 ## 3. Implementation Status and Program Guard
 
-Until this RFC is formally reviewed and merged into `tonalli-core`, all repositories MUST adhere to the following rule:
+Merging this documentary RFC into `tonalli-core` does **NOT** enable or authorize "real REGTEST".
+
+The prohibition against qualifying any test or execution as "real REGTEST" terminates **ONLY** when:
+1. Core v1.1 runtime schemas and binary codec are fully implemented in `tonalli-core`.
+2. Exact-head reviews and independent approvals are completed on the implementation PR.
+3. The implementation PR is merged to `main` and reproducibly published or pinned.
+4. Downstream consumers (`tonalli-agents` and `RMZWallet`) update their dependencies and bind to the strict network domain schemas.
+
+Until all these mandatory milestones are achieved, all repositories MUST adhere strictly to the following normative guard:
 
 > **NO TEST OR INTEGRATION PASS SHALL BE CHARACTERIZED AS "REAL REGTEST"**.
 > All current simulation tests using `xec:mainnet` remain strictly categorized as:
